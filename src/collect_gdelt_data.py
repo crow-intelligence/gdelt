@@ -29,11 +29,12 @@ from sqlalchemy import (
     create_engine,
 )
 
+# TODO: clean up imports!
 ###############################################################################
 #####                             Settings                                #####
 ###############################################################################
 # set the search range here
-start_day = "2022-01-01"  # set the starting date here, test only with one or two days!
+start_day = "2022-09-01"  # set the starting date here, test only with one or two days!
 today = str(date.today())
 # get a tuple of dates which can be supplied to str.starts with to filter out urls
 date_range = pd.date_range(
@@ -101,6 +102,7 @@ results = result_porxy.fetchall()
 sources_collected = set([e[0] for e in results])
 print(f"We've already collected {len(sources_collected)} items")
 
+i = 0
 for l in resp.split("\n"):
     try:
         _, _, url = l.split()
@@ -151,6 +153,8 @@ for l in resp.split("\n"):
                 except Exception as e:
                     print(f"data insertion failed:\t{e}")
                     continue
+        i += 1
+        print(f"processed {i} items")
     except Exception as e:
         print(f"getting data failed with:\t{e}")
         continue

@@ -17,6 +17,11 @@ cairosvg = "*"
 svglib = "*"
 altair-saver = "*"
 networkx = "*"
+aiohttp = "*"
+newspaper3k = "*"
+lxml = "*"
+graphistry = {extras = ["bolt", "gremlin", "igraph", "networkx", "nodexl"], version = "*"}
+jupyterlab = "*"
 
 [dev-packages]
 black = "*"
